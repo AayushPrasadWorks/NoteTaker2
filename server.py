@@ -1,13 +1,54 @@
 import pymongo
 
-myclient = pymongo.MongoClient('localhost', 27017)
-db = myclient["test"]
-cl = mydb["test"]
+class server:
+
+    def
+    def getPersonMessage(name):
+        myclient = pymongo.MongoClient('localhost', 27017)
+        db = myclient["test"]
+        cl = db["test"]
+        myquery = { "name": name }
+        doc = cl.find(myquery)
+
+        for x in doc:
+            print(x)
+
+        
+
+    def add(name, message, date):
+        myclient = pymongo.MongoClient('localhost', 27017)
+        db = myclient["test"]
+        cl = db["test"]
+        di = { "name": name, "message": message, "date": date}
+        cl.insert_one(di)
 
 
-dicts = { "name": "John", "message": "hello", "date": "00/00/00"}
+    def printAll():
+        myclient = pymongo.MongoClient('localhost', 27017)
+        db = myclient["test"]
+        cl = db["test"]
+        y = cl.find().sort("name", 1)
+        for x in y:
+            print(x)
 
-x = cl.insert_one(dicts)
-y =  cl.find({},{ "name": 1, "message": 1 })
-print(x)
-print(y)
+
+
+
+
+    
+
+
+server.getPersonMessage("Eddie")
+
+
+
+
+
+    
+
+
+
+
+
+
+
