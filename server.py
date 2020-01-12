@@ -2,7 +2,7 @@ import pymongo
 
 class server:
 
-    def
+    
     def getPersonMessage(name):
         myclient = pymongo.MongoClient('localhost', 27017)
         db = myclient["test"]
