@@ -1,19 +1,24 @@
-from flask_wtf import FlaskForm
-from flask import Flask, render_template, url_for, flash, redirect
-from form import InsertForm, DeleteForm
+from flask import Flask
+from flask import request
+from flask import render_template
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde270ba245'
 
-@app.route("/", methods=['GET', 'POST'])
-def insert():
-    form = InsertForm()
-    serv = server()
-    if form.validate_on_submit():
-        serv.add(form.name.data, form.message.data, form.date.data)
+@app.route('/', methods=['GET'])
+def forms():
+    return render_template("text.html")
 
-        
-
+@app.route('/', methods=['POST', 'GET'])
+def form_insert():
+    print(request.data)
+    if request.method == 'POST':
+       name = request.form.get('name')
+       message = request.form.get('message')
+       date = request.form.get('date')
+       ser = Server()
+       ser.add(name, message, date)
+    else:
+        name = request.form.get('name')
+        message = request.form.get('message')
+        date = request.form.get('date')
+        return name
     
-    
-
-

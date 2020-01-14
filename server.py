@@ -1,6 +1,7 @@
 import pymongo
 
-class server:
+
+class Server:
 
     
     def getPersonMessage(name):
@@ -35,10 +36,6 @@ class server:
 
 
 
-    
-
-
-server.getPersonMessage("Eddie")
 
 
 
