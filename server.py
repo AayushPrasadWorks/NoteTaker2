@@ -16,7 +16,7 @@ class Server:
 
         
 
-    def add(name, message, date):
+    def add(self,name, message, date):
         myclient = pymongo.MongoClient('localhost', 27017)
         db = myclient["test"]
         cl = db["test"]
