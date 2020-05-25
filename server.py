@@ -4,33 +4,42 @@ import pymongo
 class Server:
 
     
-    def getPersonMessage(name):
-        myclient = pymongo.MongoClient('localhost', 27017)
+    def getPersonMessage(self,name):
+        myclient = pymongo.MongoClient('127.0.0.1', 27017)
         db = myclient["test"]
         cl = db["test"]
         myquery = { "name": name }
         doc = cl.find(myquery)
-
         for x in doc:
             print(x)
 
         
 
     def add(self,name, message, date):
-        myclient = pymongo.MongoClient('localhost', 27017)
+        myclient = pymongo.MongoClient('127.0.0.1', 27017)
         db = myclient["test"]
         cl = db["test"]
         di = { "name": name, "message": message, "date": date}
         cl.insert_one(di)
 
 
-    def printAll():
-        myclient = pymongo.MongoClient('localhost', 27017)
+    def update(self, name, new_message, new_date):
+        myclient = pymongo.MongoClient('127.0.0.1', 27017)
         db = myclient["test"]
         cl = db["test"]
-        y = cl.find().sort("name", 1)
-        for x in y:
-            print(x)
+        query = {"name": name}
+        di = {"$set": {"message": new_message, "date": new_date}}
+        cl.update_one(query,di,True)
+
+    def delete(self,name):
+        myclient = pymongo.MongoClient('127.0.0.1', 27017)
+        db = myclient["test"]
+        cl = db["test"]
+        di = { "name": name}
+        cl.delete_one(di)
+
+
+           
 
 
 
